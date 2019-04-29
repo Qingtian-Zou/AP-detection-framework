@@ -11,7 +11,7 @@
                   v                                                                                      |
 	+-------------+---------------+       +--------------------------+                     +-------------+------------+
 	|                             |       |                          |                     |                          |
-	|  Attack pattern repository  +------>+  Attack pattern parsers  +-------------------->+  Attack pattern matcher  +---->  User
+	|  Attack pattern repository  +------>+  Attack pattern parsers  +-------------------->+  Attack pattern matcher  +<--->  User
 	|                             |       |                          |                     |                          |
 	+-----------------------------+       +--------------------------+                     +-------------+------------+
                                                                                                          ^
