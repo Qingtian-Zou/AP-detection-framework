@@ -25,10 +25,14 @@ def mark_parallel(k):
 def initialize():
     pp = pprint.PrettyPrinter(indent=4)
     file_list = os.listdir(FLAGS.path)
+    graphs={}
+    i=0
     for fi in file_list:
         if fi.split(".")[-1] not in ["dot", "gv"]:
             continue
         # extract pattern info from dot file
+        i+=1
+        step_nodes = {}
         pattern_file = open(os.path.join(FLAGS.path, fi), 'r')
         lines = pattern_file.readlines()
         pattern_file.close()
@@ -98,6 +102,8 @@ def initialize():
         # now all step node data is in step_nodes
 
         pp.pprint(step_nodes)
+        graphs[i]["graph_name"]=graph_name
+        graphs[i]["step_nodes"]=step_nodes
 
 
 # Codes below are for debugging
