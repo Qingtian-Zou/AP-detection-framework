@@ -1,35 +1,39 @@
 import argparse
 import os
 import csv
-import pprint
+import pickle
 
-FLAGS=None
+FLAGS = None
+
 
 def main():
-    pp = pprint.PrettyPrinter(indent=4)
-    file_list=os.listdir(FLAGS.path)
+    file_list = os.listdir(FLAGS.path)
+    event_list = {}
     for f in file_list:
-        if f.split(".")[-1]!="csv":
+        if f.split(".")[-1] != "csv":
             continue
-        fi=open(os.path.join(FLAGS.path,f),encoding="utf-8-sig")
-        reader=csv.reader(fi,delimiter=',')
-        n=-1
-        event_list=[]
+        event_list[f] = []
+        fi = open(os.path.join(FLAGS.path, f), encoding="utf-8-sig")
+        reader = csv.reader(fi, delimiter=',')
+        n = -1
         for row in reader:
-            n+=1
-            if n==0:
-                continue # skip header
-            event_list.append((row[3],row[5]))
+            n += 1
+            if n == 0:
+                continue  # skip header
+            event_list[f].append((row[3], row[5]))
         fi.close()
-        pp.pprint(event_list)
+    fi=open('tmp.txt','wb')
+    pickle.dump(event_list,fi)
+    fi.close()
 
-if __name__=="__main__":
-    parser=argparse.ArgumentParser()
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
     parser.add_argument(
         "--path",
         type=str,
         default=".",
         help="path to the log folder"
     )
-    FLAGS,unparsed=parser.parse_known_args()
+    FLAGS, unparsed = parser.parse_known_args()
     main()
