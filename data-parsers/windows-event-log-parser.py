@@ -22,7 +22,7 @@ def main():
                 continue  # skip header
             event_list[f].append((row[3], row[5]))
         fi.close()
-    fi=open('tmp.txt','wb')
+    fi=open('tmp.pickle','wb')
     pickle.dump(event_list,fi)
     fi.close()
 

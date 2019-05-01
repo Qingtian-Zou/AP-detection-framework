@@ -81,12 +81,12 @@ def main():
 
     # Step 2: verify the existence of previous packets dictionary, then load/build the dictionary
     try:
-        fi = open("packet_dict.txt", 'rb')
+        fi = open("packet.dict", 'rb')
     except FileNotFoundError as err1:
         pkt_dict = set()
         print(err1)
         print("dictionary not found, create a new one...")
-        fi = open("packet_dict.txt", 'wb')
+        fi = open("packet.dict", 'wb')
         for item in network_logs:
             pkts = network_logs[item]
             ii = len(pkts)
@@ -96,7 +96,7 @@ def main():
                     print("remain: "+str(ii))
         pickle.dump(pkt_dict, fi)
         fi.close()
-        fi = open("packet_dict.txt", 'rb')
+        fi = open("packet.dict", 'rb')
 
     # Step 3: convert every entry read into numbers according to the dictionary
     dict_list = list(pickle.load(fi))
@@ -113,7 +113,7 @@ def main():
             except ValueError as err2:
                 print(err2)
                 pkt_dict = set(dict_list)
-                fi = open("packet_dict.txt", 'wb')
+                fi = open("packet.dict", 'wb')
                 pickle.dump(pkt_dict, fi)
                 fi.close()
                 dict_list = list(pkt_dict)

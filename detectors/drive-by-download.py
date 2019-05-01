@@ -24,7 +24,7 @@ def main(event_list):
         print()
 
 if __name__=="__main__":
-    fi=open('tmp.txt','rb')
+    fi=open('tmp.pickle','rb')
     event_list=pickle.load(fi)
     fi.close()
     main(event_list)
