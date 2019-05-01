@@ -7,8 +7,6 @@ import numpy as np
 import pyshark
 
 FLAGS = None
-# indentify the start packet in each session
-identifier = [('114', '0x00000018', '0'), ('0', '0x00000000', None)]
 
 
 def main():
