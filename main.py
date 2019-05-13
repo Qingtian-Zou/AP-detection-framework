@@ -41,6 +41,20 @@ if __name__=="__main__":
     # TODO: for each folder above, the framework should:
     # 1) go through all the files in it and parse related files to parsers or other components.
     tmp={}
+    for item in os.listdir(FLAGS.APs):
+        if item.split(".")[-1] not in ["dot", "gv"]:
+            continue
+        parent_conn, child_conn = Pipe()
+        p=Process(target=DOT_parser.initialize,args=(os.path.join(FLAGS.net_logs,item),child_conn,))
+        p.start()
+        tmp[p]=parent_conn
+    APs={}
+    for p in tmp:
+        rec=tmp[p].recv()
+        APs[rec[0]]=rec[1]
+        p.join()
+
+    tmp={}
     for item in os.listdir(FLAGS.net_logs):
         if item.split(".")[-1] not in ["pcapng", "pcap"]:
             continue
