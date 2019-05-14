@@ -4,7 +4,6 @@ import json
 import os
 import pprint
 
-global step_nodes
 step_nodes = {}
 FLAGS = None
 
@@ -24,6 +23,7 @@ def mark_parallel(k):
 
 
 def initialize(path,pipe_conn):
+    global step_nodes
     pp = pprint.PrettyPrinter(indent=4)
     graphs={}
     # extract pattern info from dot file
@@ -96,5 +96,4 @@ def initialize(path,pipe_conn):
             mark_parallel(k)
     # now all step node data is in step_nodes
 
-    pp.pprint(step_nodes)
     pipe_conn.send((graph_name,step_nodes))

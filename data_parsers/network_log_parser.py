@@ -4,7 +4,6 @@ import pprint
 
 import numpy as np
 import pyshark
-from multiprocessing import Pipe
 
 def analyze_net_log(path,pipe_conn):
     pp = pprint.PrettyPrinter(indent=4)

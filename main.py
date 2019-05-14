@@ -38,6 +38,7 @@ if __name__=="__main__":
     data_parsing_jobs=[]
     identification_jobs=[]
 
+    __spec__=None
     # TODO: for each folder above, the framework should:
     # 1) go through all the files in it and parse related files to parsers or other components.
     tmp={}
@@ -45,7 +46,7 @@ if __name__=="__main__":
         if item.split(".")[-1] not in ["dot", "gv"]:
             continue
         parent_conn, child_conn = Pipe()
-        p=Process(target=DOT_parser.initialize,args=(os.path.join(FLAGS.net_logs,item),child_conn,))
+        p=Process(target=DOT_parser.initialize,args=(os.path.join(FLAGS.APs,item),child_conn,))
         p.start()
         tmp[p]=parent_conn
     APs={}
@@ -67,4 +68,34 @@ if __name__=="__main__":
         rec=tmp[p].recv()
         pkts[rec[0]]=rec[1]
         p.join()
+
+    tmp={}
+    for item in os.listdir(FLAGS.proc_logs):
+        if item.split(".")[-1] not in ["csv", "CSV"]:
+            continue
+        parent_conn, child_conn = Pipe()
+        p=Process(target=process_monitor_log_parser.analyze_process_log,args=(os.path.join(FLAGS.proc_logs,item),child_conn,))
+        p.start()
+        tmp[p]=parent_conn
+    procs={}
+    for p in tmp:
+        rec=tmp[p].recv()
+        procs[rec[0]]=rec[1]
+        p.join()
+
+    tmp={}
+    for item in os.listdir(FLAGS.win_logs):
+        if item.split(".")[-1] not in ["csv", "CSV"]:
+            continue
+        parent_conn, child_conn = Pipe()
+        p=Process(target=windows_event_log_parser.analyze_windows_event_log,args=(os.path.join(FLAGS.win_logs,item),child_conn,))
+        p.start()
+        tmp[p]=parent_conn
+    win_events={}
+    for p in tmp:
+        rec=tmp[p].recv()
+        win_events[rec[0]]=rec[1]
+        p.join()
+
+    pass
     # 2) create a watchdog monitor to monitor changes. New task should be scheduled if new log/AP files are put in, or files are updated.
