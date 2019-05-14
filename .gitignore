@@ -1,4 +1,5 @@
 *.pickle
 *.dict
-*trained-models*
+*trained_models*
 *.log
+*.bat
