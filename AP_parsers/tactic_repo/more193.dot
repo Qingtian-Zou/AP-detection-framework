@@ -1,0 +1,21 @@
+diagraph more193 {
+	// nodes
+	1[label="start",shape=box,style=rounded];
+	2[label="External Remote Services",shape=box];
+		//P1;S1//
+	3[label="Bypass User Account Control",shape=box];
+		//P2;P3
+		//P1=>P3//
+	4[label="Credential dumping",shape=box];
+		//P4
+		//P3=>P4//
+	5[label="Pass the hash",shape=box];
+		//P5;U1//
+	6[label="Data exfiltration",shape=box];
+		//P6;F1
+		//P5=>P6;F1->P6//
+	7[label="end",shape=box,style=rounded];
+
+	// edges
+	1->2->3->4->6->7
+}

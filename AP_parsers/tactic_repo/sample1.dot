@@ -1,0 +1,73 @@
+digraph sample01 {
+	rankdir="LR" // horizontal layout
+	
+    // nodes
+    1[label="start",shape=box,style=rounded];
+    2[label="d",shape=diamond];
+    3[label="d",shape=diamond];
+    4[label="d",shape=diamond];
+    5[label="d",shape=diamond];
+    6[label="d",shape=diamond];
+    7[label="Initial intrusion through VPN",shape=box];
+    8[label="Drive-by-download",shape=box];
+    9[label="Bootkit on shared drive",shape=box];
+    10[label="DLL hijacking of shared drive",shape=box];
+    11[label="+",shape=circle];
+    12[label="+",shape=circle];
+    13[label="Automated lateral movement by login scripts",shape=box];
+    14[label="X",shape=circle];
+    15[label="X",shape=circle];
+    17[label="Establish internal C&C",shape=box];
+    18[label="Establish external C&C",shape=box];
+    19[label="Collect credentials",shape=box];
+    22[label="Pass-the-hash",shape=box];
+    23[label="Discover target",shape=box];
+    25[label="Attack using credential",shape=box];
+    26[label="Attack using vulnerabilities",shape=box];
+    27[label="Check",shape=diamond];
+    28[label="Data compression and encryption",shape=box];
+    29[label="Data exfiltration over C&C",shape=box];
+    30[label="Data exfiltration over alternative protocol",shape=box];
+    31[label="end",shape=box,style=rounded];
+
+    // edges
+    1->2->7->3;
+    2->8->3;
+    3->9->11;
+    3->10->11;
+    11->13->14->4;
+    4->17->12;
+    4->18->12;
+    12->19->22->23->15->5;
+    5->25->27;
+    5->26->27;
+    27->28[xlabel="Succeed"];
+    27->5[xlabel="Fail"];
+    28->6->29->31;
+    6->30->31;
+
+    {rank=same;1,13,19,5,6} // for multi-row layout
+}
+
+
+    // data flows
+    //16[label="C&C communication",shape=folder];
+    //20[label="Compromised machines",shape=folder];
+    //21[label="Credentials",shape=folder];
+    //24[label="Targets",shape=folder];
+    //13->20[style=dashed];
+    //13->21[style=dashed,constraint=false];
+    //20->17[style=dashed,constraint=false];
+    //20->18[style=dashed,constraint=false];
+    //20->19[dir="both",style=dashed,constraint=false];
+    //21->19[style=dashed]
+    //22->21[style=dashed,constraint=false]
+    //21->25[style=dashed,constraint=false]
+    //23->24[style=dashed]
+    //24->25[style=dashed,constraint=false]
+    //24->26[style=dashed,constraint=false]
+    //17->16[style=dashed,constraint=false];
+    //18->16[style=dashed,constraint=false];
+    //22->16[style=dashed];
+    //28->16[style=dashed,constraint=false]
+//}

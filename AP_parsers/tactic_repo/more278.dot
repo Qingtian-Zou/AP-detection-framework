@@ -1,0 +1,22 @@
+diagraph more278 {
+	// nodes
+	1[label="start",shape=box,style=rounded];
+	2[label="External Remote Services",shape=box];
+		//P1;S1//
+	3[label="Process injection",shape=box];
+		//P2;P3
+		//P1=>P2//
+	4[label="Account manipulation",shape=box];
+		//P4;U1
+		//P3=>P4//
+	5[label="Logon scripts",shape=box];
+		//P5;F1
+		//P4=>P5//
+	6[label="Data manipulation",shape=box];
+		//P6;F2
+		//P5=>P6;P6->F2//
+	7[label="end",shape=box,style=rounded];
+
+	// edges
+	1->2->3->4->6->7
+}

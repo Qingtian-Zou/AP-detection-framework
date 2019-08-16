@@ -1,0 +1,22 @@
+diagraph more063 {
+	// nodes
+	1[label="start",shape=box,style=rounded];
+	2[label="Drive-by-download",shape=box];
+		//P1//
+	3[label="New service",shape=box];
+		//P2;S1
+		//P1=>P2//
+	4[label="Account manipulation",shape=box];
+		//P3;U1
+		//P2=>P3//
+	5[label="Logon scripts",shape=box];
+		//P4;F1
+		//P3=>P4//
+	6[label="Data destruction",shape=box];
+		//P5;F2
+		//P4=>P5;P5->F2//
+	7[label="end",shape=box,style=rounded];
+
+	// edges
+	1->2->3->4->6->7
+}

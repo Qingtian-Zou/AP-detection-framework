@@ -1,0 +1,21 @@
+diagraph more251 {
+	// nodes
+	1[label="start",shape=box,style=rounded];
+	2[label="External Remote Services",shape=box];
+		//P1;S1//
+	3[label="New service",shape=box];
+		//P2;S2
+		//P1=>P2//
+	4[label="Account manipulation",shape=box];
+		//P3;U1
+		//P2=>P3//
+	5[label="Pass the hash",shape=box];
+		//P4;U2//
+	6[label="Data destruction",shape=box];
+		//P5;F1
+		//P4=>P5;P5->F1//
+	7[label="end",shape=box,style=rounded];
+
+	// edges
+	1->2->3->4->6->7
+}

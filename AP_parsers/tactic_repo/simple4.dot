@@ -1,0 +1,16 @@
+digraph simple04 {
+    // nodes
+    1[label="start",shape=box,style=rounded];
+    2[label="Drive-by-download",shape=box];
+		//P1//
+    3[label="New service",shape=box];
+		//P2;S1
+		//P1=>P2//
+    4[label="Data destruction",shape=box];
+		//P3;F1
+		//S1=P3//
+    6[label="end",shape=box,style=rounded];
+
+    // edges
+    1->2->3->4->6;
+}

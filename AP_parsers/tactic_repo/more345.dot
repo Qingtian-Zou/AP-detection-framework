@@ -1,0 +1,21 @@
+diagraph more345 {
+	// nodes
+	1[label="start",shape=box,style=rounded];
+	2[label="Spearphishing link",shape=box];
+		//P1//
+	3[label="New service",shape=box];
+		//P2;S1
+		//P1=>P2//
+	4[label="Account manipulation",shape=box];
+		//P3;U1
+		//P2=>P3//
+	5[label="Pass the hash",shape=box];
+		//P4;U2//
+	6[label="Data exfiltration",shape=box];
+		//P5;F1
+		//P4=>P5;F1->P5//
+	7[label="end",shape=box,style=rounded];
+
+	// edges
+	1->2->3->4->6->7
+}

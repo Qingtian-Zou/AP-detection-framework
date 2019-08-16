@@ -1,0 +1,16 @@
+digraph simple05 {
+    // nodes
+    1[label="start",shape=box,style=rounded];
+    2[label="Drive-by-download",shape=box];
+		//P1//
+    3[label="Process injection",shape=box];
+		//P2;P3
+		//P1=>P2//
+    4[label="Data exfiltration",shape=box];
+		//P4;F1
+		//P3=>P4//
+    6[label="end",shape=box,style=rounded];
+
+    // edges
+    1->2->3->4->6;
+}

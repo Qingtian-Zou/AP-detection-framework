@@ -1,0 +1,22 @@
+diagraph more109 {
+	// nodes
+	1[label="start",shape=box,style=rounded];
+	2[label="Exploit Public-Facing Application",shape=box];
+		//P1//
+	3[label="Bypass User Account Control",shape=box];
+		//P2;P3
+		//P1=>P2//
+	4[label="Account manipulation",shape=box];
+		//P4;U1
+		//P3=>P4//
+	5[label="Logon scripts",shape=box];
+		//P5;F1
+		//P4=>P5//
+	6[label="Data exfiltration",shape=box];
+		//P6;F2
+		//P5=>P6;F2->P6//
+	7[label="end",shape=box,style=rounded];
+
+	// edges
+	1->2->3->4->6->7
+}

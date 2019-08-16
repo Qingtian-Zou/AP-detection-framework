@@ -1,0 +1,21 @@
+diagraph more228 {
+	// nodes
+	1[label="start",shape=box,style=rounded];
+	2[label="External Remote Services",shape=box];
+		//P1;S1//
+	3[label="DLL Search Order Hijacking",shape=box];
+		//P2;F1;P3
+		//P1=>P2;P2->F1;F1->P3//
+	4[label="Account manipulation",shape=box];
+		//P4;U1
+		//P3=>P4//
+	5[label="Pass the hash",shape=box];
+		//P5;U2//
+	6[label="Endpoint denial of service",shape=box];
+		//P6;S2
+		//P5=>P6//
+	7[label="end",shape=box,style=rounded];
+
+	// edges
+	1->2->3->4->6->7
+}
