@@ -103,7 +103,7 @@ def initialize(AP_dir):
                 step_nodes=mark_parallel(step_nodes,k)
         # now all step node data is in step_nodes
 
-        fi = open(os.path.join("AP_parsers", graph_name+".pickle"), 'wb')
+        fi = open(os.path.join("AP_parsers","parsed_tactic", graph_name+".pickle"), 'wb')
         pickle.dump(step_nodes, fi)
         fi.close()
 
@@ -114,7 +114,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--AP_dir",
         type=str,
-        default="..\\codes\\attack-patterns"
+        default="AP_parsers\\tactic_repo"
     )
     FLAGS, unparsed = parser.parse_known_args()
     initialize(FLAGS.AP_dir)
