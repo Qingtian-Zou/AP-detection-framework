@@ -57,6 +57,7 @@ def initialize(AP_dir):
                     nodes[node_id]['parallel'] = False
                     nodes[node_id]['qualify'] = []
                     nodes[node_id]['depend'] = []
+                    nodes[node_id]['matched']=False
                     flag = 1.5
                 elif flag==1.5 and line[0:4] == "\t\t//" and line[-3:] == "//\n":
                     nodes[node_id]['post']=line.strip().strip("/").split(";")

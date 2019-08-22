@@ -72,7 +72,7 @@ if __name__ == "__main__":
                         lines.append(str(node_set[data[4][i5]]%6))
                         lines.append(str(node_set["end"]%7))
                         lines.append("\n")
-                        lines.append("\t// edges\n\t1->2->3->4->6->7\n}\n")
+                        lines.append("\t// edges\n\t1->2->3->4->5->6->7\n}\n")
                         fi=open(str("new/more%.3d.dot"%tactic_id),"w")
                         fi.writelines(lines)
                         fi.close()
