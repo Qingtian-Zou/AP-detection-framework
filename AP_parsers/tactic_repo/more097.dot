@@ -1,4 +1,4 @@
-diagraph more097 {
+digraph more097 {
 	// nodes
 	1[label="start",shape=box,style=rounded];
 	2[label="Exploit Public-Facing Application",shape=box];
@@ -17,5 +17,5 @@ diagraph more097 {
 	7[label="end",shape=box,style=rounded];
 
 	// edges
-	1->2->3->4->6->7
+	1->2->3->4->5->6->7
 }

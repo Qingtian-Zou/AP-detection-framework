@@ -1,4 +1,4 @@
-diagraph more211 {
+digraph more211 {
 	// nodes
 	1[label="start",shape=box,style=rounded];
 	2[label="External Remote Services",shape=box];
@@ -17,5 +17,5 @@ diagraph more211 {
 	7[label="end",shape=box,style=rounded];
 
 	// edges
-	1->2->3->4->6->7
+	1->2->3->4->5->6->7
 }

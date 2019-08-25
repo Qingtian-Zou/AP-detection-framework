@@ -3,7 +3,7 @@ digraph simple02 {
     1[label="start",shape=box,style=rounded];
     2[label="Drive-by-download",shape=box];
 		//P1//
-    3[label="Bypass User Account Control (UAC)",shape=box];
+    3[label="Bypass User Account Control",shape=box];
 		//P2;P3
 		//P1=>P2//
     4[label="Credential dumping",shape=box];

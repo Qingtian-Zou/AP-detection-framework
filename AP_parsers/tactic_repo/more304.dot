@@ -1,4 +1,4 @@
-diagraph more304 {
+digraph more304 {
 	// nodes
 	1[label="start",shape=box,style=rounded];
 	2[label="Spearphishing link",shape=box];
@@ -18,5 +18,5 @@ diagraph more304 {
 	7[label="end",shape=box,style=rounded];
 
 	// edges
-	1->2->3->4->6->7
+	1->2->3->4->5->6->7
 }
