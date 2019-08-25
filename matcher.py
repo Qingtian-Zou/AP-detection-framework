@@ -150,8 +150,9 @@ def count_instances(instances):
                 stat[inst['tactic_name']]=0
             stat[inst['tactic_name']]+=1
             print(inst)
-    print("Fully matched tactics: %d" % completed)
+    print("Fully matched instances: %d" % completed)
     print(stat)
+    print("Partially matched instances: %d" % (len(instances)-completed))
 
 
 if __name__ == "__main__":
@@ -164,12 +165,12 @@ if __name__ == "__main__":
     parser.add_argument(
         "--SOD",
         type=str,
-        default="single-multi_SOD.pickle"
+        default="multi-multi_SOD.pickle"
     )
     parser.add_argument(
         "--matched",
         type=str,
-        default="single-multi_matched.pickle"
+        default="multi-multi_matched.pickle"
     )
     FLAGS, unparsed = parser.parse_known_args()
     read_AP_tactic_templates(FLAGS.templates_dir)
@@ -190,7 +191,7 @@ if __name__ == "__main__":
                 tech[1]=tech[1]|single_match_flag
                 flags.append(single_match_flag)
             instance_change_flag=any(flags)
-    fi=open("single-multi_tactic_instances.pickle",'wb')
+    fi=open("multi-multi_tactic_instances.pickle",'wb')
     pickle.dump(tactic_instance,fi)
     fi.close()
     count_instances(tactic_instance)
@@ -198,6 +199,6 @@ if __name__ == "__main__":
     for tech in pool:
         if not tech[1]:
             unmatched_pool.append(tech)
-    fi=open('single-multi_unmatched_pool.pickle','wb')
+    fi=open('multi-multi_unmatched_pool.pickle','wb')
     pickle.dump(unmatched_pool,fi)
     fi.close()

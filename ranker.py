@@ -1,6 +1,7 @@
 import argparse
 import os
 import pickle
+from operator import itemgetter
 
 FLAGS = None
 
@@ -44,12 +45,6 @@ def calc_scores(instances,pool_stat):
                 inst['score']=0
     return instances
 
-def ranking(instances):
-    # Make a list or ranks to be sorted
-    ranks = [x for x in range(len(instances))]
-    # Sort ranks based on the key of data each refers to
-    return sorted(ranks, reverse=True, key=lambda x:instances[x-1]['score'])
-
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -78,6 +73,6 @@ if __name__ == "__main__":
             pool_stat[tech[0]]=0
         pool_stat[tech[0]]+=1
     instances=calc_scores(instances,pool_stat)
-    ranks=ranking(instances)
-    for i in range(10):
-        print(instances[ranks[i]])
+    sorted_instances = sorted(instances, key=itemgetter('score'), reverse=True)
+    for i in range(100):
+        print(sorted_instances[i])
