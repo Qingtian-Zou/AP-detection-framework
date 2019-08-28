@@ -74,5 +74,5 @@ if __name__ == "__main__":
         pool_stat[tech[0]]+=1
     instances=calc_scores(instances,pool_stat)
     sorted_instances = sorted(instances, key=itemgetter('score'), reverse=True)
-    for i in range(100):
+    for i in range(min([100,len(sorted_instances)])):
         print(sorted_instances[i])
