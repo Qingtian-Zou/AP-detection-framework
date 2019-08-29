@@ -2,6 +2,7 @@ import argparse
 import os
 import pickle
 from operator import itemgetter
+import psutil
 
 FLAGS = None
 
@@ -76,3 +77,5 @@ if __name__ == "__main__":
     sorted_instances = sorted(instances, key=itemgetter('score'), reverse=True)
     for i in range(min([100,len(sorted_instances)])):
         print(sorted_instances[i])
+    process = psutil.Process(os.getpid())
+    print(process.memory_info().rss)  # in bytes 

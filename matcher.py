@@ -2,6 +2,7 @@ import argparse
 import os
 import pickle
 import copy
+import psutil
 
 global tactic_templates
 tactic_templates = []
@@ -202,3 +203,5 @@ if __name__ == "__main__":
     fi=open('multi-multi_unmatched_pool.pickle','wb')
     pickle.dump(unmatched_pool,fi)
     fi.close()
+    process = psutil.Process(os.getpid())
+    print(process.memory_info().rss)  # in bytes 
